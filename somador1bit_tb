@@ -1,0 +1,66 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x586cff5c7110 .scope module, "somador_tb" "somador_tb" 2 3;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sum";
+    .port_info 1 /OUTPUT 1 "carryOut";
+v0x586cff5db0f0_0 .var "a", 0 0;
+v0x586cff5db1b0_0 .var "b", 0 0;
+v0x586cff5db280_0 .net "carryOut", 0 0, L_0x586cff5db5b0;  1 drivers
+v0x586cff5db380_0 .net "sum", 0 0, L_0x586cff5db450;  1 drivers
+S_0x586cff5c72a0 .scope module, "u_somadorSimples" "somadorSimples" 2 6, 3 1 0, S_0x586cff5c7110;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "sum";
+    .port_info 3 /OUTPUT 1 "carryOut";
+L_0x586cff5db450 .functor XOR 1, v0x586cff5db0f0_0, v0x586cff5db1b0_0, C4<0>, C4<0>;
+L_0x586cff5db5b0 .functor AND 1, v0x586cff5db0f0_0, v0x586cff5db1b0_0, C4<1>, C4<1>;
+v0x586cff58dcf0_0 .net "a", 0 0, v0x586cff5db0f0_0;  1 drivers
+v0x586cff5dae20_0 .net "b", 0 0, v0x586cff5db1b0_0;  1 drivers
+v0x586cff5daee0_0 .net "carryOut", 0 0, L_0x586cff5db5b0;  alias, 1 drivers
+v0x586cff5daf80_0 .net "sum", 0 0, L_0x586cff5db450;  alias, 1 drivers
+    .scope S_0x586cff5c7110;
+T_0 ;
+    %vpi_call 2 15 "$display", "a b | sum carryout" {0 0 0};
+    %vpi_call 2 16 "$display", "--------------" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x586cff5db0f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x586cff5db1b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 20 "$display", "%b %b |  %b     %b", v0x586cff5db0f0_0, v0x586cff5db1b0_0, v0x586cff5db380_0, v0x586cff5db280_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x586cff5db0f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x586cff5db1b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 24 "$display", "%b %b |  %b     %b", v0x586cff5db0f0_0, v0x586cff5db1b0_0, v0x586cff5db380_0, v0x586cff5db280_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x586cff5db0f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x586cff5db1b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 28 "$display", "%b %b |  %b     %b", v0x586cff5db0f0_0, v0x586cff5db1b0_0, v0x586cff5db380_0, v0x586cff5db280_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x586cff5db0f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x586cff5db1b0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 32 "$display", "%b %b |  %b     %b", v0x586cff5db0f0_0, v0x586cff5db1b0_0, v0x586cff5db380_0, v0x586cff5db280_0 {0 0 0};
+    %vpi_call 2 34 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "/home/gi/Desktop/Semestre8/LAOC2/preparacao/curso_verilog/pratica1_Giovanni/treino_somador_4_bits/somador1bit_tb.v";
+    "./treino_somador_4_bits/somador1bit.v";
